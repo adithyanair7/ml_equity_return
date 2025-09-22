@@ -50,6 +50,7 @@ The framework is designed to be extensible for both academic research and profes
    ```
 
 3. **Run backtest**  
+   ```markdown
    ```bash
    python src/portfolio.py \
   --scores data/universe/scores.csv \
