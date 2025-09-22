@@ -49,8 +49,7 @@ The framework is designed to be extensible for both academic research and profes
    python src/train_model.py --model ensemble --step 21 --zscore
    ```
 
-3. **Run backtest**  
-   ```markdown
+3. **Run backtest**
    ```bash
    python src/portfolio.py --scores data/universe/scores.csv --features data/universe/features.csv --horizon 21 --top_pct 0.06 --cost_bps 25 --execution_lag_days 1 --soft_weighting --softmax_temp 0.8 --name_vol_cap 0.02 --clip_ret 0.03 --dispersion_gate 1.2
    ```
