@@ -5,9 +5,9 @@ This repository implements a complete research framework for forecasting and bac
 ## Overview
 
 The project provides an end-to-end system that covers:
-- Data preparation from raw panel data (e.g., CRSP/Compustat or Nasdaq-100).
+- Data preparation from raw panel data (Nasdaq-100).
 - Feature engineering for predictive signals (momentum, volatility, liquidity, value-style proxies).
-- Machine learning model training using Random Forests and XGBoost in a pooled cross-sectional walk-forward setup.
+- Machine learning model training using Random Forests and XGBoost in a pooled cross-sectional walk-forward setup from 2016-2024.
 - Bias-safe backtesting with transaction costs, volatility targeting, lagged execution, and delisting return integration.
 
 The framework is designed to be extensible for both academic research and professional quantitative finance applications.
@@ -51,7 +51,18 @@ The framework is designed to be extensible for both academic research and profes
 
 3. **Run backtest**  
    ```bash
-   python src/portfolio.py --scores data/universe/scores.csv --features data/universe/features.csv --horizon 21 --soft_weighting
+   python src/portfolio.py \
+  --scores data/universe/scores.csv \
+  --features data/universe/features.csv \
+  --horizon 21 \
+  --top_pct 0.06 \
+  --cost_bps 25 \
+  --execution_lag_days 1 \
+  --soft_weighting \
+  --softmax_temp 0.8 \
+  --name_vol_cap 0.02 \
+  --clip_ret 0.03 \
+  --dispersion_gate 1.2
    ```
 
 ## Example Results
@@ -70,6 +81,3 @@ The repository includes Jupyter notebooks in the `notebooks/` directory:
 - **01_feature_engineering_demo.ipynb** – Demonstrates engineered features from raw panel data.
 - **02_backtest_demo.ipynb** – Illustrates backtest execution and analysis of results.
 
-## License
-
-This project is released under the MIT License for educational and research purposes.
